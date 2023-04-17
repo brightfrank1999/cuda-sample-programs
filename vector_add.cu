@@ -37,17 +37,14 @@ int main(){
     // Transfer data from device to host memory 
     cudaMemcpy(out, d_out, sizeof(float)*N, cudaMemcpyDeviceToHost);
 
-    for(int i = 0; i < 10; i ++){
+    for(int i = 0; i < 20; i ++){
          printf("%f\n", out[1]);
     }
+    printf("%f\n", out[N-1]);
    
     // Clean memory
-    cudaFree(d_a);
-    cudaFree(d_b);
-    cudaFree(d_out);
-    free(a);
-    free(b);
-    free(out);
+    cudaFree(d_a), cudaFree(d_b), cudaFree(d_out);
+    free(a), free(b), free(out);
 
     return 0;
 }
